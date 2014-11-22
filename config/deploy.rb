@@ -1,6 +1,5 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
-require 'capistrano-unicorn'
 
 set :application, 'capistrano-deploy'
 set :repo_url, 'git@github.com:ajn123/cap_demo.git'
@@ -44,6 +43,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'unicorn:restart'
     end
   end
 

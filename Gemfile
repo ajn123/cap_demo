@@ -32,10 +32,8 @@ gem 'haml-rails'
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  gem 'capistrano-unicorn', :require => false
+  gem 'capistrano3-unicorn'
 end
-
-
 
 
 

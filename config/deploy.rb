@@ -36,6 +36,9 @@ set :log_level, :debug
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -46,6 +49,8 @@ namespace :deploy do
       invoke 'unicorn:restart'
     end
   end
+
+
 
   after :publishing, :restart
   after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded

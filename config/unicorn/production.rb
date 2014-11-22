@@ -2,8 +2,8 @@
 #### Uncomment in before/after fork to make this happy
 
 worker_processes 4
-user "unprivileged_user", "unprivileged_group"
-working_directory "/u/apps/yourappdirectory/current" # available in 0.94.0+
+user "root", "unprivileged_group"
+working_directory "/var/www/capistrano-deploy/current" # available in 0.94.0+
 
 listen "/tmp/.sock", :backlog => 64
 listen 8080, :tcp_nopush => true

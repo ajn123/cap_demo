@@ -4,6 +4,7 @@ lock '3.2.1'
 set :application, 'capistrano-deploy'
 set :repo_url, 'git@github.com:ajn123/cap_demo.git'
 set :rvm_ruby_version, '2.0.0'
+set :stage, :production
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 

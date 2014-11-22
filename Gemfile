@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'haml-rails'
 
+gem 'thin'
+
 
 group :development do
   gem 'capistrano-rails'

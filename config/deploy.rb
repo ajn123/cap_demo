@@ -1,5 +1,6 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
+require 'capistrano-unicorn'
 
 set :application, 'capistrano-deploy'
 set :repo_url, 'git@github.com:ajn123/cap_demo.git'
@@ -14,11 +15,12 @@ set :stage, :production
 # Default value for :scm is :git
 # set :scm, :git
 
+
 # Default value for :format is :pretty
-# set :format, :pretty
+set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :debug
 
 # Default value for :pty is false
 # set :pty, true
@@ -42,11 +44,14 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-      execute "service thin restart"  ## -> line you should add
+      execute "/etc/init.d/thin restart"  ## -> line you should add
     end
   end
 
   after :publishing, :restart
+  after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+  after 'deploy:restart', 'unicorn:restart'   # app preloaded
+  after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @scarf.name
+
+= link_to 'Edit', edit_scarf_path(@scarf)
+\|
+= link_to 'Back', scarves_path

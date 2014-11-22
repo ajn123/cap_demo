@@ -1,0 +1,19 @@
+%h1 Listing scarves
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @scarves.each do |scarf|
+    %tr
+      %td= scarf.name
+      %td= link_to 'Show', scarf
+      %td= link_to 'Edit', edit_scarf_path(scarf)
+      %td= link_to 'Destroy', scarf, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Scarf', new_scarf_path

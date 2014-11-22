@@ -34,6 +34,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-unicorn'
+    gem 'capistrano-postgresql', '~> 4.2.0'
 end
 
 

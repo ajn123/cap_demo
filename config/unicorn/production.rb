@@ -6,7 +6,7 @@ user "root"
 working_directory "/var/www/capistrano-deploy/current" # available in 0.94.0+
 
 listen "/tmp/.sock", :backlog => 64
-listen 8080, :tcp_nopush => true
+listen 80, :tcp_nopush => true
 
 timeout 30
 
